@@ -1,5 +1,16 @@
 package com.wancs.prj.springboot.domain.posts;
-
+/***
+ *  Entity를 지정하는 역할
+ *  Setter대신 @Builder를 사용함.
+ *  기본적인 구조는 생성자를 사용하여 값을 넣는 것이지만,
+ *  생성자는 매개변수의 순서가 변경되어도 오류를 찾을 수 없음.
+ *  하지만, 빌더를 사용하면 어떤 필드에 어떤 값을 넣는지가 명확해짐.
+ *
+ *  기본적으로 getter/setter를 많이 사용하지만,
+ *  이러한 경우 해당 클래스의 인스턴스가 언제 어디서 변하는지 명확하게 구분하는게 어려워짐
+ *  => Builder를 사용하고, 만약 해당 필드의 값 변경이 필요하면 명확히 그 목적과 의도가 나타나는
+ *  메소드를 추가해야 함.
+ */
 
 import com.wancs.prj.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
@@ -24,7 +35,6 @@ public class Posts extends BaseTimeEntity {//Entity Class 라고 말함.
 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
-
     private String author;
 
     @Builder // 빌더패턴클래스 생성, 생성자 상단에 선언 시 생성자에 포함된 필드만 빌더에 포함.
